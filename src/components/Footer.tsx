@@ -61,23 +61,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Tagline */}
           <div className="col-span-1 md:col-span-2 flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 bg-white/10 rounded-xl p-1.5 backdrop-blur-sm">
-                <Image
-                  src="/logo.svg"
-                  alt="Alvision Media Logo"
-                  fill
-                  className="object-contain invert brightness-0"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-extrabold text-xl leading-none text-white tracking-tight">
-                  Alvision
-                </span>
-                <span className="font-sans font-bold text-xs tracking-[0.2em] text-primary-light text-white/70 mt-0.5">
-                  MEDIA
-                </span>
-              </div>
+            <div className="relative w-44 h-14">
+              <Image
+                src="/logo.png"
+                alt="Alvision Media Logo"
+                fill
+                className="object-contain brightness-0 invert"
+              />
             </div>
             <p className="font-sans text-white/80 max-w-sm mt-2 text-sm leading-relaxed">
               "Digital Brilliance Delivered" — Empowering businesses to thrive and succeed through strategic marketing insights and personalized solutions.

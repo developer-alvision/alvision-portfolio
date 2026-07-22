@@ -62,22 +62,14 @@ export default function Navbar() {
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Alvision Media Home"
           >
-            <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-36 h-12 transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Alvision Media Logo"
                 fill
                 className="object-contain"
                 priority
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-lg leading-none text-primary-dark tracking-tight">
-                Alvision
-              </span>
-              <span className="font-sans font-bold text-xs tracking-[0.2em] text-primary mt-0.5">
-                MEDIA
-              </span>
             </div>
           </a>
 

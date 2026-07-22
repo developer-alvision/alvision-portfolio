@@ -1,20 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <!-- Angular 'A'-shaped mark (two overlapping strokes forming a peak/arrow) -->
+  <!-- Alvision Media "A" Mark - Rounded upward chevron with rounded bottom ends -->
   <defs>
-    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5B87A6" />
-      <stop offset="100%" stop-color="#3F6883" />
-    </linearGradient>
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E24A6B" />
-      <stop offset="100%" stop-color="#C13854" />
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7AAFCC" />
+      <stop offset="100%" stop-color="#5B93B3" />
     </linearGradient>
   </defs>
   
-  <!-- Left Stroke (representing the peak arrow) -->
-  <path d="M 25 80 L 50 30 L 65 30 L 40 80 Z" fill="url(#blueGrad)" />
-  
-  <!-- Right Overlapping Stroke (forming the peak/arrow and crossing) -->
-  <path d="M 45 80 L 60 50 L 75 50 L 60 80 Z" fill="url(#accentGrad)" opacity="0.85" />
-  <path d="M 35 55 L 65 55 L 60 63 L 40 63 Z" fill="url(#blueGrad)" opacity="0.9" />
+  <!-- Main rounded "A" chevron shape -->
+  <path d="M 15 82 C 15 82 15 78 18 74 L 44 18 C 46 14 48 12 50 12 C 52 12 54 14 56 18 L 82 74 C 85 78 85 82 85 82 C 85 88 80 90 77 84 L 50 28 L 23 84 C 20 90 15 88 15 82 Z" 
+        fill="url(#logoGrad)" />
 </svg>

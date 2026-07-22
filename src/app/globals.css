@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF7F0; /* Cream */
-  --foreground: #1E1E1E; /* Text */
-  --primary: #5B87A6; /* Steel Blue */
-  --primary-dark: #3F6883;
-  --accent: #E24A6B; /* CTA Accent */
+  --background: #F5F9FC; /* Light blue-tinted white (from logo palette) */
+  --foreground: #1A1A1A; /* Near black (logo text color) */
+  --primary: #7AAFCC; /* Alvision steel blue (from logo) */
+  --primary-dark: #4A7D9C; /* Darker steel blue */
+  --accent: #2B6F9E; /* Deep blue accent (derived from logo gradient) */
   --surface: #FFFFFF;
 }
 

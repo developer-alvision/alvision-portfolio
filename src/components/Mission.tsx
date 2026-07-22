@@ -26,8 +26,8 @@ export default function Mission() {
 
         {/* Logo Mark Signature */}
         <div className="flex flex-col items-center gap-2 mt-4">
-          <div className="relative w-8 h-8 opacity-75">
-            <Image src="/logo.svg" alt="Alvision Media Symbol" fill className="object-contain" />
+          <div className="relative w-28 h-8 opacity-75">
+            <Image src="/logo.png" alt="Alvision Media Logo" fill className="object-contain" />
           </div>
           <cite className="not-italic font-sans text-xs font-bold text-primary-dark/50 uppercase tracking-widest">
             Alvision Media Group
