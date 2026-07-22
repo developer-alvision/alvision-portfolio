@@ -61,13 +61,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Tagline */}
           <div className="col-span-1 md:col-span-2 flex flex-col gap-4">
-            <div className="relative w-44 h-14">
+            <div className="relative w-21 h-14">
               <Image
                 src="/logo.png"
                 alt="Alvision Media Logo"
                 fill
                 className="object-contain brightness-0 invert"
-                sizes="176px"
+                sizes="84px"
               />
             </div>
             <p className="font-sans text-white/80 max-w-sm mt-2 text-sm leading-relaxed">
