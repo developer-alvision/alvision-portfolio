@@ -77,7 +77,7 @@ export default function Hero() {
           {/* Secondary Tagline Near Logo/CTA */}
           <div className="flex items-center gap-4 border-t border-primary/10 pt-6 mt-4 w-full">
             <div className="relative w-28 h-8 flex-shrink-0">
-              <Image src="/logo.png" alt="Alvision Logo" fill className="object-contain" />
+              <Image src="/logo.png" alt="Alvision Logo" fill className="object-contain" sizes="112px" />
             </div>
             <p className="font-sans text-xs font-semibold text-primary-dark uppercase tracking-wider">
               "Unlocking the Power of Growth and Success"

@@ -68,6 +68,7 @@ export default function Navbar() {
                 alt="Alvision Media Logo"
                 fill
                 className="object-contain"
+                sizes="144px"
                 priority
               />
             </div>

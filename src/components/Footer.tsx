@@ -67,6 +67,7 @@ export default function Footer() {
                 alt="Alvision Media Logo"
                 fill
                 className="object-contain brightness-0 invert"
+                sizes="176px"
               />
             </div>
             <p className="font-sans text-white/80 max-w-sm mt-2 text-sm leading-relaxed">
