@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF7F0; /* Cream */
+  --foreground: #1E1E1E; /* Text */
+  --primary: #5B87A6; /* Steel Blue */
+  --primary-dark: #3F6883;
+  --accent: #E24A6B; /* CTA Accent */
+  --surface: #FFFFFF;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  
+  --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Custom styles for hexagon shapes */
+.hexagon-wrapper {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* Soft low-opacity bg blobs */
+.brand-blob {
+  position: absolute;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+/* Hide scrollbars for carousel containers */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
