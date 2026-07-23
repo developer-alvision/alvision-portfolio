@@ -72,10 +72,10 @@ function PortfolioCard({
   return (
     <div
       onClick={() => onOpenLightbox(item)}
-      className="group relative aspect-[3/4] w-full max-w-[400px] mx-auto sm:mx-0 sm:w-[48vw] md:w-[35vw] lg:w-[28vw] sm:max-w-[360px] sm:flex-shrink-0 sm:snap-start rounded-[24px] sm:rounded-[32px] overflow-hidden bg-white shadow-lg border border-primary/5 hover:shadow-2xl hover:scale-[1.03] transition-all duration-500 cursor-pointer"
+      className="group relative aspect-[3/4] w-full max-w-[400px] mx-auto sm:mx-0 sm:w-[48vw] md:w-[35vw] lg:w-[28vw] sm:max-w-[360px] sm:flex-shrink-0 sm:snap-start rounded-[24px] sm:rounded-[32px] overflow-hidden bg-black shadow-lg border border-primary/5 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 cursor-pointer transform-gpu"
     >
       {/* Video / Poster Canvas */}
-      <div className="absolute inset-0 w-full h-full bg-primary/5">
+      <div className="absolute inset-0 w-full h-full bg-black">
         {!videoError && !prefersReducedMotion ? (
           <video
             ref={videoRef}
@@ -84,19 +84,23 @@ function PortfolioCard({
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             onError={() => setVideoError(true)}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className={`w-full h-full ${
+              item.aspectRatio === "landscape" ? "object-cover object-center" : "object-cover object-center"
+            }`}
+            style={{ willChange: "transform", transform: "translateZ(0)" }}
           />
         ) : (
           /* Fallback Canvas when reduced motion or video fails */
-          <div className="relative w-full h-full overflow-hidden">
+          <div className="relative w-full h-full overflow-hidden bg-black">
             {item.poster ? (
               <Image
                 src={item.poster}
                 alt={`${item.clientName} project showcase`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                quality={90}
+                className="object-cover object-center"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-tr from-primary/30 to-primary-dark/30 flex flex-col items-center justify-center p-6 text-center">
@@ -115,17 +119,17 @@ function PortfolioCard({
       </div>
 
       {/* Dark Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-95" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-95 pointer-events-none" />
 
       {/* Play/Pause Micro-indicator */}
       {!prefersReducedMotion && !videoError && (
-        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           {isPlaying ? <Pause className="w-3.5 h-3.5 fill-white" /> : <Play className="w-3.5 h-3.5 fill-white" />}
         </div>
       )}
 
       {/* Detail Overlay Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex flex-col items-start gap-3 text-white">
+      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex flex-col items-start gap-3 text-white pointer-events-none">
         <span className="font-sans text-[11px] font-bold bg-accent text-white px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
           {item.category}
         </span>
@@ -226,7 +230,7 @@ export default function Portfolio() {
       {selectedItem && (
         <div
           onClick={handleCloseLightbox}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md animate-fade-in"
         >
           {/* Lightbox Card container */}
           <div
@@ -236,14 +240,14 @@ export default function Portfolio() {
             {/* Close Button */}
             <button
               onClick={handleCloseLightbox}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors focus:outline-none"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 transition-colors focus:outline-none backdrop-blur-sm"
               aria-label="Close lightbox"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Video / Visual Column */}
-            <div className="md:w-3/5 aspect-video md:aspect-auto md:min-h-[450px] relative bg-black flex items-center justify-center">
+            <div className="md:w-3/5 min-h-[300px] md:min-h-[480px] relative bg-black flex items-center justify-center overflow-hidden">
               <video
                 ref={lightboxVideoRef}
                 src={selectedItem.videoSrc}
@@ -252,7 +256,9 @@ export default function Portfolio() {
                 autoPlay
                 loop
                 playsInline
-                className="w-full h-full object-contain"
+                preload="auto"
+                className="w-full h-full object-contain max-h-[75vh]"
+                style={{ willChange: "transform", transform: "translateZ(0)" }}
               />
             </div>
 
