@@ -17,6 +17,11 @@ function PortfolioCard({
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
+  useEffect(() => {
+    setIsVideoReady(false);
+  }, [item.videoSrc]);
 
   useEffect(() => {
     // Check for user reduced motion preference
@@ -77,20 +82,37 @@ function PortfolioCard({
       {/* Video / Poster Canvas */}
       <div className="absolute inset-0 w-full h-full bg-black">
         {!videoError && !prefersReducedMotion ? (
-          <video
-            ref={videoRef}
-            src={item.videoSrc}
-            poster={item.poster || undefined}
-            muted
-            loop
-            playsInline
-            preload="auto"
-            onError={() => setVideoError(true)}
-            className={`w-full h-full ${
-              item.aspectRatio === "landscape" ? "object-cover object-center" : "object-cover object-center"
-            }`}
-            style={{ willChange: "transform", transform: "translateZ(0)" }}
-          />
+          <>
+            <div className="absolute inset-0 w-full h-full overflow-hidden bg-black">
+              {item.poster ? (
+                <Image
+                  src={item.poster}
+                  alt={`${item.clientName} project showcase`}
+                  fill
+                  quality={90}
+                  className={`object-cover object-center transition-opacity duration-300 ${isVideoReady ? "opacity-0" : "opacity-100"}`}
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-tr from-primary/30 to-primary-dark/30 flex flex-col items-center justify-center p-6 text-center" />
+              )}
+            </div>
+            <video
+              ref={videoRef}
+              src={item.videoSrc}
+              poster={item.poster || undefined}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onLoadedData={() => setIsVideoReady(true)}
+              onCanPlay={() => setIsVideoReady(true)}
+              onError={() => setVideoError(true)}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
+                item.aspectRatio === "landscape" ? "object-cover object-center" : "object-cover object-center"
+              } ${isVideoReady ? "opacity-100" : "opacity-0"}`}
+              style={{ willChange: "transform", transform: "translateZ(0)" }}
+            />
+          </>
         ) : (
           /* Fallback Canvas when reduced motion or video fails */
           <div className="relative w-full h-full overflow-hidden bg-black">
